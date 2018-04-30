@@ -3,20 +3,25 @@
 </div>
 <div class="row">
   {{#each article}}
-  <div class="col m8">
+  <div class="col s12 m6">
     <div class="card">
       <div class="card-image">
         <img src={{image}}>
       </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <h4 class="header">{{title}}</h4>
-          <p>{{summary}}</p>
-        </div>
-        <div class="card-action">
-          <a href={{link}}>Full Story</a>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">{{title}}<i class="material-icons right">more_vert</i></span>
+        <p>{{summary}}</p>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Notes
+            <i class="material-icons right">close</i>
+          </span>
+          <p>Comments from users...</p>
         </div>
       </div>
+      <div class="card-action">
+        <a href={{link}}>Full Story</a>
+      </div>
+
     </div>
   </div>
   {{/each}}
