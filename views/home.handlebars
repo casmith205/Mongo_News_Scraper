@@ -4,24 +4,27 @@
 <div class="row">
   {{#each article}}
   <div class="col s12 m6">
-    <div class="card">
+    <div class="card hoverable">
       <div class="card-image">
-        <img src={{image}}>
+        <img class="responsive-img" src={{image}}>
       </div>
       <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">{{title}}<i class="material-icons right">more_vert</i></span>
+        <span class="card-title activator grey-text text-darken-4">
+          {{title}}
+          <i class="material-icons right">more_vert</i>
+        </span>
+
         <p>{{summary}}</p>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Notes
-            <i class="material-icons right">close</i>
-          </span>
-          <p>Comments from users...</p>
-        </div>
       </div>
       <div class="card-action">
         <a href={{link}}>Full Story</a>
       </div>
-
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Notes
+          <i class="material-icons right">close</i>
+        </span>
+        <p class="flow-text">Comments from users...</p>
+      </div>
     </div>
   </div>
   {{/each}}
