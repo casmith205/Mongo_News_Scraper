@@ -8,7 +8,8 @@ var request = require("request");
 // Require all models
 var db = require("./models");
 
-var PORT = 8080;
+// Defining the port
+var PORT = process.env.PORT || 8080;
 
 // Initialize Express
 var app = express();
@@ -25,8 +26,13 @@ app.use(bodyParser.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/MongoScraper";
+
+// Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/MongoScraper");
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
+
 
 //Routes
 require("./routes/html-routes.js")(app)
