@@ -12,6 +12,13 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
+  summary: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: String
+  },
   note: {
     type: Schema.Types.ObjectId,
     ref: "Note"
