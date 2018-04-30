@@ -1,4 +1,5 @@
 var express = require("express");
+var exphbs = require("express-handlebars")
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var cheerio = require("cheerio");
@@ -17,11 +18,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
+// parse application/json
+app.use(bodyParser.json());
+
+// using the handlebars views
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 // Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/MongoScraper");
 
-// api routes
-// require("./routes/api-routes.js")(app)
+//Routes
+require("./routes/html-routes.js")(app)
 
 // Routes
 // ---------------------------------------------
@@ -59,16 +67,7 @@ app.get("/scrape", function (req, res) {
   });
 });
 
-// Route for getting all Articles from the db
-app.get("/articles", function (req, res) {
-  db.Article.find({})
-    .then(function (dbArticle) {
-      res.json(dbArticle);
-    })
-    .catch(function (err) {
-      res.json(err);
-    });
-});
+
 
 // Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function (req, res) {
