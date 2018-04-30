@@ -74,21 +74,6 @@ app.get("/scrape", function (req, res) {
 });
 
 
-
-// Route for grabbing a specific Article by id, populate it with it's note
-app.get("/articles/:id", function (req, res) {
-  db.Article.findOne({ _id: req.params.id })
-    .populate("note")
-    .then(function (dbArticle) {
-      res.json(dbArticle);
-    })
-    .catch(function (err) {
-      res.json(err);
-    });
-});
-
-
-
 // Start the server
 app.listen(PORT, function () {
   console.log("App running on port " + PORT);
