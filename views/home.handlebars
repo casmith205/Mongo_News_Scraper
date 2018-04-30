@@ -2,5 +2,22 @@
   NPR Music News Scraper
 </div>
 <div class="row">
-  {{each Article}} {{title}}
+  {{#each article}}
+  <div class="col m8">
+    <div class="card">
+      <div class="card-image">
+        <img src={{image}}>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <h4 class="header">{{title}}</h4>
+          <p>{{summary}}</p>
+        </div>
+        <div class="card-action">
+          <a href={{link}}>Full Story</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
 </div>
