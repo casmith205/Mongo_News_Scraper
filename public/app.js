@@ -13,6 +13,10 @@ $(document).on("click", ".noteTrigger", function () {
   })
     .then(function (data) {
       console.log(data);
+      <li>
+        <div class="collapsible-header"></div>
+        <div class="collapsible-body"></div>
+      </li>
     }
     );
 });

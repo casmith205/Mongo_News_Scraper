@@ -23,13 +23,8 @@
         <span class="card-title grey-text text-darken-4">Notes
           <i class="material-icons right">close</i>
         </span>
-        <ul class="collapsible">
-          {{#each note}}
-          <li>
-            <div class="collapsible-header">{{title}}</div>
-            <div class="collapsible-body">{{body}}</div>
-          </li>
-          {{/each}}
+        <ul class="collapsible" data-id={{id}}>
+          
           <li>
             <div class="collapsible-header">Add your own...</div>
             <div class="collapsible-body">

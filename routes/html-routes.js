@@ -24,11 +24,8 @@ module.exports = function (app) {
         db.Article.findOne({ _id: req.params.id })
             .populate("note")
             .then(function (result) {
-                var noteObj = {
-                    note: result.note
-                }
-                console.log(noteObj);
-                res.render("home", noteObj);
+                
+                res.json(result);
             })
             .catch(function (err) {
                 res.json(err);
@@ -39,11 +36,12 @@ module.exports = function (app) {
     app.post("/articles/:id", function (req, res) {
         db.Note.create(req.body)
             .then(function (dbNote) {
-                return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+                return db.Article.findOneAndUpdate({ _id: req.params.id }, {$push: { note: dbNote._id }}, { new: true });
             })
             .then(function (result) {
+                console.log(result);
                 var noteObj = {
-                    note: result
+                    note: result.note
                 }
                 res.render("home", noteObj);
             })
